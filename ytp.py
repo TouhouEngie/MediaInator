@@ -1,9 +1,17 @@
-import yt_dlp as youtube
-import ffmpeg
+import dependencies
+
+while True:
+    try:
+        import yt_dlp as youtube
+        break
+    except ImportError:
+        dependencies.install_youtube()
+
+# you must also have ffmpeg and deno installed!
 
 parameters = {
     'format': 'mp3/bestaudio/best', # Download best quality
-    'outtmpl': './%(title)s.%(ext)s', # Output template
+    'outtmpl': './songs/%(title)s.%(ext)s', # Output template
     'noplaylist': True, # Don't download a playlist
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
@@ -18,10 +26,10 @@ def download_mp3(url):
             print("Download successful!")
             
             # video metadata
-            title = info.get('title', 'N/A')
+            title = info.get('title', 'N/A') + ".mp3"
             duration = info.get('duration', 'N/A')
-            print(f"Downloaded: {title}")
-            print(f"Duration: {duration} seconds")
+            
+            return title
 
     except Exception as err:
         print(f"An error occurred: {err}")
