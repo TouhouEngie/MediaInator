@@ -19,6 +19,9 @@ parameters = {
     }]
 }
 
+def sign_in(pathway):
+    parameters.update({'cookies': f'{pathway}/cookies.txt'})
+
 def download_mp3(url):
     try:
         with youtube.YoutubeDL(parameters) as download:

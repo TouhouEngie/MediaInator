@@ -1,5 +1,6 @@
 import os
 import vlc
+import ytp
 # TODO: switch away from VLC somehow
 
 pathway = "./songs"
@@ -54,6 +55,9 @@ def set_up_objects():
         for j in range(rin(file_list)):
             if (final_list[i]["song_path"] == file_list[j][1]):
                 final_list[i]["name"] = file_list[j][0]
+
+def sign_in():
+    ytp.sign_in(pathway)
 
 def pause():
     global current_song

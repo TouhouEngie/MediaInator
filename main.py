@@ -10,9 +10,10 @@ def troubleshooter():
     print("1. YouTube requires sign-in")
     print("2. Set up JS runtime")
     print("3. Set up FFmpeg")
+    print("4. Reinstall yt-dlp")
     print("\n===== Storage =====")
-    print("4. Set up HTTP fileserver...")
-    print("5. Main menu\n")
+    print("5. Set up HTTP fileserver...")
+    print("6. Main menu\n")
 
     while True:
         try:
@@ -20,14 +21,17 @@ def troubleshooter():
         except ValueError:
             print("Invalid option. ")
         if (user_input == 1):
-            print("Sorry not yet implemented.")
+            print("Assuming that cookies.txt is in song directory")
+            playlist.sign_in()
         elif (user_input == 2):
             dependencies.install_deno()
         elif (user_input == 3):
             dependencies.install_something("ffmpeg")
         elif (user_input == 4):
-            print("Sorry not yet implemented.")
+            dependencies.install_youtube()
         elif (user_input == 5):
+            print("Sorry not yet implemented.")
+        elif (user_input == 6):
             main_menu()
             return 0
         else:
