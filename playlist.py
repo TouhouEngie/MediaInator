@@ -43,18 +43,20 @@ def set_up_objects():
             "name": song_list[i][0:rin(song_list[i]) - 4]
         }
         final_list.append(dict_item)
-    
-    file = open(f"{pathway}/names.csv", "r")
-    file_list = []
-    for line in file:
-        file_list.append(line.strip().split(","))
-    file.close()
-    
-    # yes, this is definitely shitty, but will have to do
-    for i in range(rin(final_list)):
-        for j in range(rin(file_list)):
-            if (final_list[i]["song_path"] == file_list[j][1]):
-                final_list[i]["name"] = file_list[j][0]
+    try:
+        file = open(f"{pathway}/names.csv", "r")
+        file_list = []
+        for line in file:
+            file_list.append(line.strip().split(","))
+        file.close()
+        
+        # yes, this is definitely shitty, but will have to do
+        for i in range(rin(final_list)):
+            for j in range(rin(file_list)):
+                if (final_list[i]["song_path"] == file_list[j][1]):
+                    final_list[i]["name"] = file_list[j][0]
+    except FileNotFoundError:
+        return
 
 def sign_in():
     ytp.sign_in(pathway)
