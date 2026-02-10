@@ -3,7 +3,7 @@ import os
 import sys
 
 def install_something(thing):
-    subprocess.run([sys.executable, "-m", "pip", "install", thing, "--break-system-packages"])
+    subprocess.run([sys.executable, "-m", "pip", "install", thing])
 
 def install_deno():
     if (os.name == "nt"):
@@ -13,4 +13,4 @@ def install_deno():
 
 def install_youtube():
     install_something("yt-dlp")
-    subprocess.run([sys.executable, "-m", "pip", "install", "-U", "yt-dlp[default]", "--break-system-packages"])
+    subprocess.run([sys.executable, "-m", "pip", "install", "-U", "yt-dlp[default]"])
